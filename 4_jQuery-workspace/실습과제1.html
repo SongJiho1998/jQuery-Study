@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습과제1</title>
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 450px;
+        }
+        .big{
+            height: 150px;
+        }
+        #userName , #list , #price{
+            width: 220px;
+        }
+        #count{
+            width: 60px;
+        }
+        #field1{
+            width: 560px;
+        }
+        #legend{
+            text-align: center;
+        }
+        #field2{
+            width: 560px;
+            height: 50px;
+        }
+        #area2{
+            text-align: center;
+        }
+        .box{
+            border: 1px solid gainsboro;
+            width: 560px;
+            height: 50px;
+            background-color: gainsboro;
+            display: none;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1><mark>Practice4</mark></h1>
+
+    <fieldset id = "field1">
+        <legend>구매 정보</legend>
+        <ul>
+            <li>구매자 : <input type = "text" id = "userName" name = "userName"  placeholder = "구매자의 이름을 입력하세요."></li>
+            <li>상품명 : <input type = "text" id = "list" name = "list" placeholder = "구매 상품 명을 입력하세요."></li>
+            <li>가격 : <input type = "text" id = "price" name = "price" placeholder = "구매 가격을 입력하세요."></li>
+            <li>구매 수량 : <input type = "number" id = "count" name = "count" placeholder = "최소 10." min = "10" max = "100" step = "10"></li>
+            <li>납품 등급 : <input type = "range" id = "range" min = "1" max = "9" step = "2"></li>
+            <li>기타 사항 : <textarea name = "content" id = "content" cols = "30" rows = 6></textarea></li>
+        </ul>
+    </fieldset>
+
+    <br>
+
+    <button onclick = "return test1();">입력 값 출력하기</button>
+
+    <br>
+    <br>
+
+    <div id = "area1" class = "area big"></div>
+
+    <script>
+
+        function test1(){
+            let userName = document.querySelector("#userName");
+            let list = document.querySelector("#list");
+            let price = document.querySelector("#price");
+            let count = document.querySelector("#count");
+            let range = document.querySelector("#range");
+            let content = document.querySelector("#content");
+            let area1 = document.querySelector("#area1");
+
+            area1.innerHTML = "구매자명 : " + userName.value + "님" + "<br>";
+            area1.innerHTML += "상품 명 : " + list.value + "<br>";
+            area1.innerHTML += "가격 : " + price.value + "만원" + "<br>";
+            area1.innerHTML += "구매 수량 : " + count.value + "개" + "<br>";
+            area1.innerHTML += "납품등급 : " + range.value + "등급" + "<br>";
+            area1.innerHTML += "기타사항 : " + content.value + "<br";
+    
+    } 
+
+    </script>
+
+    <br><br>
+    <hr>
+
+    <h1><mark>Practice5</mark></h1>
+
+    <fieldset id = "field2">
+        <legend id = "legend">검색할 항목을 선택하세요.</legend>
+        <div id = "area2" name = "area2">
+            <input type = "radio" id = "title" name = "search" onclick = "show(this);"><label for = "title">제목</label>
+            <input type = "radio" id = "day" name = "search" onclick = "show(this);"><label for = "day">날짜</label>
+            <input type = "radio" id = "user" name = "search" onclick = "show(this);"><label for = "user">작성자</label>
+        </div>
+    </fieldset>
+
+    <br>
+
+    <div id = "titleSearch" class = "box">
+       검색할 제목을 입력하세요 : <br>
+       <input type = "search" id = "title" name = "title" size = "50"> &nbsp;
+       <input type = "submit" value = "검색"> 
+    </div>
+
+    <div id = "daySearch" class = "box">
+        검색할 날짜를 선택하세요 : <br>
+        <input type = "date" id = "start" name = "start"> - <input type = "date" id = "end" name = "end"> &nbsp;
+        <input type = "submit" value = "검색">
+     </div>
+
+    <div id = "userSearch" class = "box">
+        검색할 작성자 아이디를 입력하세요 : <br>
+        <input type = "search" id = "user" name = "user"> &nbsp;
+        <input type = "submit" value = "검색">
+     </div>
+
+     <script>
+        function show(element){
+            let tag = document.getElementsByClassName("box");
+
+             for(let i=0; i<tag.length;i++){
+                if(element.id+"Search" == tag[i].id){
+                    tag[i].style.display = "block";
+                }else{
+                    tag[i].style.display = "none";
+                }
+            }
+
+        }
+     </script>
+    
+</body>
